@@ -65,7 +65,7 @@ def app():
     if st.button("Begin"):
         # Load the Iris dataset
         penguins = pd.read_csv('penguins.csv', header=None)
-        penguins = datasets.load_penguins()
+        penguins = datasets.penguins.csv()
         X = penguins.data  # Features
         y = penguins.target  # Target labels (species)
 
