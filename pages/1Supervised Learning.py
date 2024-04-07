@@ -64,11 +64,15 @@ def app():
 
     if st.button("Begin"):
         # Load the Iris dataset
-        penguins = pd.read_csv('penguins.csv', header=None)
-        X = penguins.data  # Features
-        y = penguins.target  # Target labels (species)
+       df = pd.read_csv('penguins.csv', header=None)
+               # display the dataset
+        st.header("Dataset")
+        st.dataframe(df, use_container_width=True) 
+        
+        X = df.values  # Features
+        y = df.target  # Target labels (species)
 
-        st.dataframe(penguins, use_container_width=True) 
+        st.dataframe(df, use_container_width=True) 
 
         # KNN for supervised classification (reference for comparison)
 
