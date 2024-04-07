@@ -78,40 +78,40 @@ def app():
         # KNN for supervised classification (reference for comparison)
 
         # Define the KNN classifier with k=5 neighbors
-        knn = KNeighborsClassifier(n_neighbors=k)
+       knn = KNeighborsClassifier(n_neighbors=k)
 
         # Train the KNN model
-        knn.fit(X, y)
+       knn.fit(X, y)
 
         # Predict the cluster labels for the data
-        y_pred = knn.predict(X)
-        st.write('Confusion Matrix')
-        cm = confusion_matrix(y, y_pred)
-        st.text(cm)
-        st.subheader('Performance Metrics')
-        st.text(classification_report(y, y_pred))
+       y_pred = knn.predict(X)
+       st.write('Confusion Matrix')
+       cm = confusion_matrix(y, y_pred)
+       st.text(cm)
+       st.subheader('Performance Metrics')
+       st.text(classification_report(y, y_pred))
 
         # Get unique class labels and color map
-        unique_labels = list(set(y_pred))
-        colors = plt.cm.get_cmap('viridis')(np.linspace(0, 1, len(unique_labels)))
+       unique_labels = list(set(y_pred))
+       colors = plt.cm.get_cmap('viridis')(np.linspace(0, 1, len(unique_labels)))
 
-        fig, ax = plt.subplots(figsize=(8, 6))
+       fig, ax = plt.subplots(figsize=(8, 6))
 
-        for label, color in zip(unique_labels, colors):
+       for label, color in zip(unique_labels, colors):
             indices = y_pred == label
             # Use ax.scatter for consistent plotting on the created axis
             ax.scatter(X[indices, 0], X[indices, 1], label=iris.target_names[label], c=color)
 
         # Add labels and title using ax methods
           # Add labels and title using ax methods
-        ax.set_xlabel('bill length (mm)')
-        ax.set_ylabel('bill depth (mm)')
-        ax.set_title('bill Length vs depth Colored by Predicted Penguins Species')
+       ax.set_xlabel('bill length (mm)')
+       ax.set_ylabel('bill depth (mm)')
+       ax.set_title('bill Length vs depth Colored by Predicted Penguins Species')
 
         # Add legend and grid using ax methods
-        ax.legend()
-        ax.grid(True)
-        st.pyplot(fig)
+       ax.legend()
+       ax.grid(True)
+       st.pyplot(fig)
 
 
 #run the app
