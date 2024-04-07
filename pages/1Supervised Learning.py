@@ -71,7 +71,7 @@ def app():
        st.dataframe(df, use_container_width=True) 
         
        X = df.values  # Features
-       y = df.target  # Target labels (species)
+       y = df.values  # Target labels (species)
 
        st.dataframe(df, use_container_width=True) 
 
