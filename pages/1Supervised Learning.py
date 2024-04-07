@@ -70,8 +70,9 @@ def app():
        st.header("Dataset")
        st.dataframe(df, use_container_width=True) 
         
-       X = df.values  # Features
-       y = df.values  # Target labels (species)
+       X = df.values[:,0:-1] # Features
+       y = df.values[:,-1]    # Target labels (species)
+
 
        st.dataframe(df, use_container_width=True) 
 
