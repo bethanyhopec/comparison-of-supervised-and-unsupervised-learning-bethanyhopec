@@ -30,10 +30,10 @@ def app():
     The Iris dataset is a popular benchmark dataset in machine learning. It contains information about 150 
     iris flowers from three different species: Iris Setosa, Iris Versicolor, and Iris Virginica. 
     Each flower is described by four features:
-    * Sepal length (cm)
-    * Sepal width (cm)
-    * Petal length (cm)
-    * Petal width (cm)
+    * bill length (mm)
+    * bill depth (mm)
+    * flipper lenght length (mm)
+    * body mass (g)
     \n**KNN Classification with Iris:**
     \n1. **Training:**
     * The KNN algorithm stores the entire Iris dataset (features and labels) as its training data.
@@ -64,9 +64,10 @@ def app():
 
     if st.button("Begin"):
         # Load the Iris dataset
-        iris = datasets.load_iris()
-        X = iris.data  # Features
-        y = iris.target  # Target labels (species)
+        df = pd.read_csv('penguins.csv', header=None)
+        penguins = datasets.load_penguins()
+        X = penguins.data  # Features
+        y = penguins.target  # Target labels (species)
 
         # KNN for supervised classification (reference for comparison)
 
@@ -96,9 +97,10 @@ def app():
             ax.scatter(X[indices, 0], X[indices, 1], label=iris.target_names[label], c=color)
 
         # Add labels and title using ax methods
-        ax.set_xlabel('Sepal length (cm)')
-        ax.set_ylabel('Sepal width (cm)')
-        ax.set_title('Sepal Length vs Width Colored by Predicted Iris Species')
+          # Add labels and title using ax methods
+        ax.set_xlabel('bill length (mm)')
+        ax.set_ylabel('bill depth (mm)')
+        ax.set_title('bill Length vs depth Colored by Predicted Penguins Species')
 
         # Add legend and grid using ax methods
         ax.legend()
