@@ -40,9 +40,11 @@ def app():
 
     if st.button("Begin"):
         # Load the Iris dataset
+        penguins = pd.read_csv('penguins.csv', header=None)
         penguins = datasets.load_penguins()
         X = penguins.data  # Features
         y = penguins.target  # Target labels (species)
+        st.dataframe(penguins, use_container_width=True) 
 
         # Define the K-means model with 3 clusters (known number of species)
         kmeans = KMeans(n_clusters=3, random_state=0, n_init=10)
