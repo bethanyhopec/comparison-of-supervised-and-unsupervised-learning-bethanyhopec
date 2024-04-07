@@ -40,9 +40,10 @@ def app():
 
     if st.button("Begin"):
         # Load the Iris dataset
-        iris = datasets.load_iris()
-        X = iris.data  # Features
-        y = iris.target  # Target labels (species)
+        penguins = pd.read_csv('penguins.csv', header=None)
+        penguins = datasets.load_penguins()
+        X = penguins.data  # Features
+        y = penguins.target  # Target labels (species)
 
         # Define the K-means model with 3 clusters (known number of species)
         kmeans = KMeans(n_clusters=3, random_state=0, n_init=10)
@@ -96,9 +97,9 @@ def app():
             ax.scatter(X[indices, 0], X[indices, 1], label=iris.target_names[label], c=color)
 
         # Add labels and title using ax methods
-        ax.set_xlabel('Sepal length (cm)')
-        ax.set_ylabel('Sepal width (cm)')
-        ax.set_title('Sepal Length vs Width Colored by Predicted Iris Species')
+        ax.set_xlabel('bill length (mm)')
+        ax.set_ylabel('bill depth (mm)')
+        ax.set_title('bill Length vs depth Colored by Predicted Penguins Species')
 
         # Add legend and grid using ax methods
         ax.legend()
